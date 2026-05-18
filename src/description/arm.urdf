@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="inertial_macros.xacro"/>
+    <material name="White">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+    <material name="Black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+
+    <joint name="base_joint" type="revolute">
+        <limit lower="-3.14" upper="3.14" effort="1000.0" velocity="6.28"/>
+        <parent link="base_link"/>
+        <child link="rot_link"/>
+        <origin xyz="0 0 0.05"/>
+        <axis xyz="0.0 0.0 1.0"/>
+    </joint>
+    <joint name="first_arm_joint" type="revolute">
+        <limit lower="-0.7" upper="0.7" effort="1000.0" velocity="6.28"/>
+        <parent link="rot_link"/>
+        <child link="first_link"/>
+        <origin xyz="0 0 0.4"/>
+    </joint>
+
+    <joint name="second_arm_joint" type="revolute">
+        <limit lower="-0.7" upper="0.7" effort="1000.0" velocity="6.28"/>
+        <parent link="first_link"/>
+        <child link="second_link"/>
+        <origin xyz="0 0 0.6"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+    
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="1.0 1.0 0.1"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="1.0 1.0 0.1"/>
+            </geometry>
+        </collision>
+        <gazebo reference="base_link">
+          Gazebo/Black
+        </gazebo>
+    </link>
+    <link name="rot_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.2"/>
+            <geometry>
+                <box size="0.1 0.1 0.4"/>
+            </geometry>
+            <material name="White"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.1 0.1 0.4"/>
+            </geometry>
+        </collision>
+        <gazebo reference="rot_link">
+          Gazebo/White
+        </gazebo>
+    <xacro:inertial_box mass="0.6" x="0.1" y="0.1" z="0.4">
+        <origin xyz="0 0 0.2"/>
+    </xacro:inertial_box>
+    </link>
+
+    <link name="first_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.3"/>
+            <geometry>
+                <box size="0.05 0.05 0.6"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.4"/>
+            <geometry>
+                <box size="0.05 0.05 0.6"/>
+            </geometry>
+        </collision>
+        <gazebo reference="first_link">
+          Gazebo/Black
+        </gazebo>
+        <xacro:inertial_box mass="0.4" x="0.05" y="0.05" z="0.6">
+            <origin xyz="0 0 0.3"/>
+        </xacro:inertial_box>
+    </link>
+
+    <link name="second_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.3"/>
+            <geometry>
+                <box size="0.025 0.025 0.6"/>
+            </geometry>
+            <material name="White"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.12"/>
+            <geometry>
+                <box size="0.025 0.025 0.6"/>
+            </geometry>
+        </collision>
+        <gazebo reference="second_link">
+          Gazebo/White
+        </gazebo>
+        <xacro:inertial_box mass="0.2" x="0.025" y="0.025" z="0.6">
+            <origin xyz="0 0 0.3"/>
+        </xacro:inertial_box>
+    </link>
+
+</robot>

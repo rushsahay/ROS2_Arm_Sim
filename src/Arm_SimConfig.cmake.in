@@ -1,0 +1,16 @@
+# - Config file for the Arm_Sim package
+# It defines the following variables
+#  Arm_Sim_INCLUDE_DIRS - include directories for FooBar
+#  Arm_Sim_LIBRARIES    - libraries to link against
+#  Arm_Sim_EXECUTABLE   - the bar executable
+
+set(Arm_Sim_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+include("${Arm_Sim_DIR}/export_Arm_Sim.cmake")
+
+# These are IMPORTED targets created by Arm_SimTargets.cmake
+set(Arm_Sim_LIBRARIES Arm_Sim)
+
+set(Arm_Sim_EXECUTABLE Arm_Viz)
+
