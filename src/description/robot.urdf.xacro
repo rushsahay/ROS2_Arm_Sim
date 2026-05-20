@@ -3,4 +3,5 @@
 
     <!-- Example link -->
    <xacro:include filename="arm.urdf"/>
+   <xacro:include filename="arm_sim.ros2_control.xacro"/>
 </robot>
