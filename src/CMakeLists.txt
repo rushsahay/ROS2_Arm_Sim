@@ -38,4 +38,10 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(PROGRAMS
+control_nodes/Arm_Controller.py
+DESTINATION lib/${PROJECT_NAME}
+RENAME position_node
+)
+
 ament_package()
