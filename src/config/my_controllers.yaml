@@ -3,23 +3,25 @@ controller_manager:
     update_rate: 30 #Hertz
     use_sim_time: true #Using gazebo so needs to be true
 
-  #Publishes the joint states
+    #Publishes the joint states
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
       
 
-    arm_position_controller:
-      type: position_controllers/JointGroupPositionController
+    arm_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
 
 
 joint_state_broadcaster:
   ros__parameters:
     update_rate: 30
 
-arm_position_controller:
+arm_velocity_controller:
   ros__parameters:
 
     joints:
       - base_joint
       - first_arm_joint
       - second_arm_joint
+
+    interface_name: velocity
