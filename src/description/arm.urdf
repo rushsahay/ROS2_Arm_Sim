@@ -8,16 +8,6 @@
         <color rgba="0.0 0.0 0.0 1.0"/>
     </material>
 
-    <link name="world"/>
-
-    <joint name="world_fixed" type="fixed">
-        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <parent link="world"/>
-        <child link="base_link"/>
-        <axis xyz="0.0 0.0 0.0"/>
-        <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
-    </joint>
-
     <joint name="base_joint" type="revolute">
         <limit lower="-3.14" upper="3.14" effort="1000.0" velocity="6.28"/>
         <parent link="base_link"/>
@@ -55,13 +45,10 @@
                 <box size="1.0 1.0 0.1"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass = "5.0" x="1.0" y="1.0" z="0.1">
-            <origin xyz ="0.0 0.0 0.0"/>
-        </xacro:inertial_box>
+        <gazebo reference="base_link">
+          Gazebo/Black
+        </gazebo>
     </link>
-    <gazebo reference="base_link">
-          <material>Gazebo/Black</material>
-    </gazebo>
     <link name="rot_link">
         <visual>
             <origin xyz="0.0 0.0 0.2"/>
@@ -76,13 +63,13 @@
                 <box size="0.1 0.1 0.4"/>
             </geometry>
         </collision>
+        <gazebo reference="rot_link">
+          Gazebo/White
+        </gazebo>
     <xacro:inertial_box mass="0.6" x="0.1" y="0.1" z="0.4">
         <origin xyz="0 0 0.2"/>
     </xacro:inertial_box>
     </link>
-    <gazebo reference="rot_link">
-          <material>Gazebo/White</material>
-    </gazebo>
 
     <link name="first_link">
         <visual>
@@ -93,18 +80,18 @@
             <material name="Black"/>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.3"/>
+            <origin xyz="0.0 0.0 0.4"/>
             <geometry>
                 <box size="0.05 0.05 0.6"/>
             </geometry>
         </collision>
+        <gazebo reference="first_link">
+          Gazebo/Black
+        </gazebo>
         <xacro:inertial_box mass="0.4" x="0.05" y="0.05" z="0.6">
             <origin xyz="0 0 0.3"/>
         </xacro:inertial_box>
     </link>
-    <gazebo reference="first_link">
-          <material>Gazebo/Black</material>
-        </gazebo>
 
     <link name="second_link">
         <visual>
@@ -120,12 +107,12 @@
                 <box size="0.025 0.025 0.6"/>
             </geometry>
         </collision>
+        <gazebo reference="second_link">
+          Gazebo/White
+        </gazebo>
         <xacro:inertial_box mass="0.2" x="0.025" y="0.025" z="0.6">
             <origin xyz="0 0 0.3"/>
         </xacro:inertial_box>
     </link>
-     <gazebo reference="second_link">
-          <material>Gazebo/White</material>
-        </gazebo>
 
 </robot>

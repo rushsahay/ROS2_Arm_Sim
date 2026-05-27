@@ -12,12 +12,8 @@
   <depend>cartographer_ros</depend>
   <depend>cartographer</depend>
   <depend>ament_cmake</depend>
-  <depend>pluginlib</depend>
-  <depend>hardware_interface</depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-
-  <exec_depend>gazebo_ros2_control</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

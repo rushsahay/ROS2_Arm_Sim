@@ -78,11 +78,11 @@ def generate_launch_description():
         output="screen"
     )
 
-    spawn_arm_velocity_controller = Node(
+    spawn_arm_position_controller = Node(
         package="controller_manager",
         executable="spawner",
         #Pass in config yaml so the controller manager knows gains
-        arguments=["arm_velocity_controller","--param-file",controller_config],
+        arguments=["arm_position_controller","--param-file",controller_config],
         parameters=[{"use_sim_time":use_sim_time}],
         output="screen"
     )
@@ -97,8 +97,8 @@ def generate_launch_description():
             gazebo,
             node_robot_state_publisher,
             spawn_entity,
-            #node_controller_manager_launcher,
+            node_controller_manager_launcher,
             spawn_joint_state_publisher,
-            spawn_arm_velocity_controller,
+            spawn_arm_position_controller,
             rviz
     ])

@@ -4,14 +4,14 @@ from std_msgs.msg import Float64MultiArray
 from rclpy.node import Node
 import time
 
-base_joint_position = 0.5 #Capped between -3.14 and 3.14 radians
-first_joint_position = 0.1 #Capped between -0.7 and 0.7 radians
-second_joint_position = -0.1 #Capped between -0.7 and 0.7 radians
+base_joint_position = 1.57 #Capped between -3.14 and 3.14 radians
+first_joint_position = 0.7 #Capped between -0.7 and 0.7 radians
+second_joint_position = -0.7 #Capped between -0.7 and 0.7 radians
 
 class Controller_Node(Node):
     def __init__(self, base_joint_position,first_joint_position,second_joint_position):
         super().__init__("Position_Node")
-        self.publisher_ = self.create_publisher(Float64MultiArray,"/arm_velocity_controller/commands",10)
+        self.publisher_ = self.create_publisher(Float64MultiArray,"/arm_position_controller/commands",10)
         self.base_position = base_joint_position
         self.first_position = first_joint_position
         self.second_position = second_joint_position
