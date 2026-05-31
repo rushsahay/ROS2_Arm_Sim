@@ -33,17 +33,17 @@ def generate_launch_description():
         parameters=[params]
     )
 
-    node_controller_manager_launcher = LaunchDescription([
-        Node(
-            package="controller_manager",
-            executable="ros2_control_node",
-            parameters=[
-                {"robot_description":robot_description_config,"update_rate":30,"use_sim_time":use_sim_time},
-                "/home/rushhaank/arm_sim/Arm_Sim/src/config/my_controllers.yaml"
-            ],
-            output="screen"
-        )
-    ])
+    # node_controller_manager_launcher = LaunchDescription([
+    #     Node(
+    #         package="controller_manager",
+    #         executable="ros2_control_node",
+    #         parameters=[
+    #             {"robot_description":robot_description_config,"update_rate":30,"use_sim_time":use_sim_time},
+    #             "/home/rushhaank/arm_sim/Arm_Sim/src/config/my_controllers.yaml"
+    #         ],
+    #         output="screen"
+    #     )
+    # ])
 
     rviz = LaunchDescription([
         Node(
@@ -92,12 +92,12 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_sim_time',
-            default_value='false',
+            default_value='true',
             description='Use sim time if true'),
             gazebo,
             node_robot_state_publisher,
             spawn_entity,
-            node_controller_manager_launcher,
+            #node_controller_manager_launcher,
             spawn_joint_state_publisher,
             spawn_arm_position_controller,
             rviz
